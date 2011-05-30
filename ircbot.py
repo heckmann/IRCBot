@@ -1,17 +1,44 @@
 import os
+#http://pypi.python.org/pypi/python-daemon/
 import daemon
 import command
 import irc
-import db
+import imp
+import sys
+
+def plugin(name, path):
+	try:
+		return sys.modules[name]
+	except KeyError:
+		pass
+
+	file, path_name, description = imp.find_module(name, [path])#[os.path.join(head, "plugins")])
+	
+	try:
+		return imp.load_module(name, file, path_name, description)
+	finally:
+		if file:
+			file.close()
 
 def main_loop(cmd):
 	# connect to irc channel
-	IRC = connect(cmd)
-	DB = connect_DB("path")
+	print "irc"
+	IRC = irc.connect(cmd)
+	
+	print "plugin"
+	LOG = plugin("db", os.path.dirname(cmd.path))
+	DB_path = os.path.join(os.path.dirname(cmd.path), "db.db")
+	
+	print "db"
+	LOG.connect_DB(DB_path)
+	
+	LOG.add(DB_path, "TEST", "ME", "Servus")
+	
 	
 if __name__ == "__main__":
-	cmd = commands()
-
+	cmd = command.commands()
+	cmd.path = os.path.abspath(sys.argv[0])
+	
 	if not cmd.deactivateDeamon:
 		#http://www.python.org/dev/peps/pep-3143/
 		with daemon.DaemonContext:
