@@ -26,8 +26,8 @@ def main_loop(cmd):
 	IRC = irc.connect(cmd)
 	
 	print "plugin"
-	LOG = plugin("db", os.path.dirname(cmd.path))
-	DB_path = os.path.join(os.path.dirname(cmd.path), "db.db")
+	LOG = plugin(cmd.plugin, os.path.dirname(cmd.path))
+	DB_path = os.path.join(os.path.dirname(cmd.path), "db." + cmd.plugin)
 	
 	print "db"
 	LOG.connect_DB(DB_path)
