@@ -33,8 +33,9 @@ def loop(IRC, LOG, DB_path, cmd):
 				LOG.add(DB_path, message[1], message[0].split("!")[0][1:], " ".join(message[3:]))
 				
 				if (message[3][1:] == "mail"):
-					if ((cmd.mhost) & (cmd.maddress)):
-						send(cmd, message[4], DB_path)
+					if cmd.mhost:
+						if cmd.maddress:
+							send(cmd, message[4], DB_path)
 
 				elif (message[3][1:] == "stalk"):
 					if len(message) > 4:

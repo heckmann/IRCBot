@@ -28,7 +28,6 @@ def main_loop(cmd):
 	DB_path = os.path.join(os.path.dirname(cmd.path), "db." + cmd.plugin)
 	
 	LOG.connect_DB(DB_path)
-	LOG.add(DB_path, "TEST", "ME", "Servus")
 	
 	irc.loop(IRC, LOG, DB_path, cmd)
 	

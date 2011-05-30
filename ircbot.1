@@ -1,0 +1,39 @@
+.TH IRCBOT 1 "MAY 2011" Linux "User Manuals"
+.SH NAME
+IRCBot \- IRC logging bot
+.SH SYNOPSIS
+.B ircbot.py [-s HOST] [-p PORT] ...
+.SH DESCRIPTION
+.B ircbot
+logs an IRC channel. This log can be used to stalk the members :) The bot is able to send the log via email to a given adress, and the logging mechanism is generic by using plugins.
+.SH OPTIONS
+.IP "-h, --help"
+show this help message and exit
+.IP "--server HOST"
+the IRC server
+.IP "--port PORT"
+the IRC port
+.IP "--nick NICK"
+the IRC nick
+.IP "--ident IDENT"
+the IRC ident
+.IP "--real RNAME"
+your IRC real name
+.IP "--channel CHANNEL"
+the IRC channel
+.IP "-D"
+Deactivate deamon
+.IP "--mhost MHOST"
+your eMail host
+.IP "--maddress MADDRESS"
+your eMail address
+.IP "--musername MUSERNAME"
+your eMail username
+.IP "--mpass MPASSWORD"
+your eMail password
+.IP "--msubject MAIL_SUBJECT"
+the eMail subject
+.IP "--plugin PLUGIN"
+logging plugin
+.SH AUTHOR
+Stefan Heckmann <heckmann.stefan at web dot de>

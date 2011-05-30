@@ -1,0 +1,27 @@
+The bot logs an IRC channel. This log can be used to stalk the members :) The bot is able to send the log via email to a given adress, and the logging mechanism is generic by using plugins.
+
+An additional plugin is already implemented writing the log to a simple textfile. Just call the programm with the parameter "--plugin txt"
+
+usage: ircbot.py [-h] [--server HOST] [--port PORT] [--nick NICK]
+                   [--ident IDENT] [--real RNAME] [--channel CHANNEL] [-D]
+                   [--mhost MHOST] [--maddress MADDRESS]
+                   [--musername MUSERNAME] [--mpass MPASSWORD]
+                   [--msubject MAIL_SUBJECT] [--plugin PLUGIN]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --server HOST         the IRC server
+  --port PORT           the IRC port
+  --nick NICK           the IRC nick
+  --ident IDENT         the IRC ident
+  --real RNAME          your IRC real name
+  --channel CHANNEL     the IRC channel
+  -D                    Deactivate deamon
+  --mhost MHOST         your eMail host
+  --maddress MADDRESS   your eMail address
+  --musername MUSERNAME
+                        your eMail username
+  --mpass MPASSWORD     your eMail password
+  --msubject MAIL_SUBJECT
+                        the eMail subject
+  --plugin PLUGIN       logging plugin

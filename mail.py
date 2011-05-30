@@ -22,8 +22,9 @@ def send(cmd, target, filePath):
 	mail.attach(part)
  
 	server = smtplib.SMTP(cmd.mhost)
-	if ((cmd.musername) & (cmd.mpassword)):
-		server.login(cmd.musername, cmd.mpassword)
+	if cmd.musername:
+		if cmd.mpassword:
+			server.login(cmd.musername, cmd.mpassword)
 
 	try:
 		failed = server.sendmail(cmd.maddress, target, mail.as_string())
