@@ -22,17 +22,15 @@ def plugin(name, path):
 
 def main_loop(cmd):
 	# connect to irc channel
-	print "irc"
 	IRC = irc.connect(cmd)
 	
-	print "plugin"
 	LOG = plugin(cmd.plugin, os.path.dirname(cmd.path))
 	DB_path = os.path.join(os.path.dirname(cmd.path), "db." + cmd.plugin)
 	
-	print "db"
 	LOG.connect_DB(DB_path)
-	
 	LOG.add(DB_path, "TEST", "ME", "Servus")
+	
+	irc.loop(IRC, LOG, DB_path, cmd)
 	
 	
 if __name__ == "__main__":
@@ -41,7 +39,7 @@ if __name__ == "__main__":
 	
 	if not cmd.deactivateDeamon:
 		#http://www.python.org/dev/peps/pep-3143/
-		with daemon.DaemonContext:
+		with daemon.DaemonContext():
 			print "main as deamon"
 			main_loop(cmd)
 	else:
