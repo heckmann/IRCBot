@@ -1,5 +1,6 @@
 import socket
 import string
+import mail
 
 def connect(cmd):
 	IRC=socket.socket()
@@ -33,8 +34,7 @@ def loop(IRC, LOG, DB_path, cmd):
 				
 				if (message[3][1:] == "mail"):
 					if ((cmd.mhost) & (cmd.maddress)):
-						for address in message[4:]:
-							print "sendEmail"
+						send(cmd, message[4], DB_path)
 
 				elif (message[3][1:] == "stalk"):
 					if len(message) > 4:
